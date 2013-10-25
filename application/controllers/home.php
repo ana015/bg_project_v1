@@ -35,7 +35,7 @@ class Home extends CI_Controller {
             'featured_bg' => $featured_bg
         );
         
-        if ($this->session->userdata('bg_by_cat_titles') == ' ') {
+        if ($this->session->userdata('bg_by_cat_titles') == '') {
             $data['browse_by_cat'] = ' ';
             
         } else {
@@ -90,7 +90,18 @@ class Home extends CI_Controller {
             echo json_encode($data);
         }
     }
+    public function allGames(){
+        $bg = $this->boardgame_model->get_boardgames();
+        $sesData = array(
+                'bg' => $bg,
+            );
 
+            $this->session->set_userdata($sesData);
+            $data = array(
+                'redirect' => base_url(). 'index.php'
+            );
+            echo json_encode($data);
+    }
     public function categories() {
         
         $i = $this->input->post('vari');

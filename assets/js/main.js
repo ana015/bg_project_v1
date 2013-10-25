@@ -100,7 +100,7 @@ var getCategories = function() {
 };
 
 var getAllGames = function() {
-    ajaxCallRedirect($('#base-url').data('url') + 'index.php', {});
+    ajaxCallRedirect($('#base-url').data('url') + 'index.php/home/allGames', {});
 };
 
 var saveNewMeeting = function() {
